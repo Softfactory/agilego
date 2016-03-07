@@ -86,9 +86,3 @@ func TestMemoryAllocation(t *testing.T) {
 	fmt.Printf("Address &i=%p Address Value=%v Size=%d\n", &v1, *&v1, reflect.TypeOf(v1).Size())
 
 }
-
-func TestConstCurrency(t *testing.T) {
-	if money.KRW != 71 {
-		t.Error("money.KRW is not KRW, actually ", money.KRW)
-	}
-}

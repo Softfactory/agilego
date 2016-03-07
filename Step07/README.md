@@ -149,8 +149,6 @@ if !isFloat32 {
 
 > 통화기호를 상수로 바꾸기
 
-
-
 ## 패키징 전에
 
 ### 문서화 작업
@@ -190,7 +188,7 @@ Unexported 메소드나 필드에 달린 주석은 노출되지 않습니다.
 ```go
 // exchange Unexported 메소드에 대한 설명은 웹으로 노출되지 않는다.
 ```
-한가지 주의 할점은 버그/TODO/Deprecated 같은 주석을 기록할 때 항상 앞 단락보다 한칸 더 들여쓰기를 해야 합니다.
+한가지 주의할 점은 ''버그/TODO/Deprecated' 같은 주석을 기록할 때 항상 앞 단락보다 한칸 더 들여쓰기를 해야 합니다.
 자세한 설명은 [공식 GODOC문서](https://godoc.org/golang.org/x/tools/cmd/godoc)를 참조하세요.
 
 #### 패키지 명과 파일명 일치시키기
@@ -209,7 +207,6 @@ Unexported 메소드나 필드에 달린 주석은 노출되지 않습니다.
 항상 이 비율을 유지하려고 노력해야 합니다.
 테스트 코드도 말끔하게 정리할 것을 권장하지만 지금 당장 필요하지 않습니다.
 
-
 ## 1부를 마치며
 
 여기까지가 money 패키지의 내용입니다.
@@ -218,9 +215,12 @@ Unexported 메소드나 필드에 달린 주석은 노출되지 않습니다.
 ### 실행 프로그램
 
 패키지를 실행하려면 main 패키지와 main 함수가 필요합니다.
-메인함수는 명령줄 옵션의 사용법과 입출력 기능이 추가되어야 합니다.
+CLI를 사용할 경우 명령줄 옵션의 사용법과 입출력 기능이 추가되어야 합니다.
+또는 웹 어플리케이션으로 만들 수도 있습니다.
+[웹어플리케이션 작성하기](https://golang.org/doc/articles/wiki/)
+[](https://www.gitbook.com/book/codegangsta/building-web-apps-with-go/details)
 
 ### 실시간 환율정보
 
 실시간 환율정보를 얻으려면 웹상에서 환율 정보를 조회해서 업데이트 해야 합니다.
-http://www.webservicex.net/CurrencyConvertor.asmx/ConversionRate?FromCurrency=string&ToCurrency=string
+이들 정보를 얻어 오려면 Rest API를 통해 접근이 가능해야 합니다.
