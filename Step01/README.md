@@ -275,5 +275,5 @@ godoc -src [패키지명] [구조체 또는 메소드]
 ```
 
 좀더 상세한 내용을 빨리 알고 싶다면 아래 두 웹페이지를 보시기 바랍니다.
-[Godoc 블로그](http://blog.golang.org/godoc-documenting-go-code)
-[Godoc 홈페이지](https://godoc.org/golang.org/x/tools/cmd/godoc)
+* [Godoc 블로그](http://blog.golang.org/godoc-documenting-go-code)
+* [Godoc 홈페이지](https://godoc.org/golang.org/x/tools/cmd/godoc)
