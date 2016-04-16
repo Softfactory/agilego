@@ -9,7 +9,7 @@ import (
 )
 
 func TestUnexportedAmount(t *testing.T) {
-	var five = money.Construct(5)
+	var five, _ = money.Construct(5)
 	var value = reflect.ValueOf(five).FieldByName("amount")
 	if value.CanSet() {
 		t.Error("You're being robbed.", value)
@@ -17,9 +17,9 @@ func TestUnexportedAmount(t *testing.T) {
 }
 
 func ExampleDollar() {
-	var five = money.Construct(5)
-
+	var five, _ = money.Construct(5)
 	fmt.Println(five)
+	// Output: {5 USD}
 }
 
 func TestCar(t *testing.T) {

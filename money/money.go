@@ -44,30 +44,38 @@ type Money struct {
 	currency Currency
 }
 
+func (money Money) String() string {
+	// var rtn = "{" + money.amount.(string) + " " + money.currency.String() + "}"
+	return fmt.Sprintf("{%v %s}", money.amount, money.currency.String())
+}
+
 // Dollar USD 통화를 나타낸다.
 func Dollar(amount float64) Money {
-	return Construct(amount, USD)
+	var money, _ = Construct(amount, USD)
+	return money
 }
 
 // Won KRW 통화를 나타낸다.
 func Won(amount float64) Money {
-	return Construct(amount, KRW)
+	var money, _ = Construct(amount, KRW)
+	return money
 }
 
 // Construct Dollar 생성자
-func Construct(amount float64, args ...Currency) Money {
+func Construct(amount float64, args ...Currency) (Money, error) {
 	currency := USD
+	var ConstructionError error
 	if len(args) == 1 {
 		arg := args[0]
 		if arg >= MAX {
-			panic("Invalid Currency Code Error")
+			ConstructionError = fmt.Errorf("Invalid Currency Code Error")
 		}
 		currency = arg
 	}
 	if len(args) > 1 {
-		panic("Too many arguments!")
+		ConstructionError = fmt.Errorf("Too many arguments!")
 	}
-	return Money{amount, currency}
+	return Money{amount, currency}, ConstructionError
 }
 
 // func Construct(amount float64, currency string= USD) Money {

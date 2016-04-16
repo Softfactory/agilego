@@ -217,31 +217,24 @@ func TestSumPlus(t *testing.T) {
 }
 
 func TestNewConstruct(t *testing.T) {
-	var fiveWon = Construct(5, KRW)
+	var fiveWon, _ = Construct(5, KRW)
 	if !reflect.DeepEqual(fiveWon, Won(5)) {
 		t.Error("Costruct Error", fiveWon)
 	}
 }
 
 func TestFailedConstruct(t *testing.T) {
-	defer func() {
-		s := recover()
-		if s != "Too many arguments!" {
-			t.Error("Failed Construct Test Error")
-		}
-	}()
-	var fiveWon = Construct(5, KRW, USD)
+	var fiveWon, err = Construct(5, KRW, USD)
+	if err.Error() != "Too many arguments!" {
+		t.Error("Failed Construct Test Error")
+	}
 	log.Println("Failed Construct test is success ", fiveWon)
 }
 
 func TestCounterfeitCurrency(t *testing.T) {
-	defer func() {
-		s := recover()
-		log.Println(s)
-		if s != "Invalid Currency Code Error" {
-			t.Error("Test for Detecting Counterfeit Failed")
-		}
-	}()
-	var counterFeit = Construct(5, MAX)
+	var counterFeit, err = Construct(5, MAX)
+	if err.Error() != "Invalid Currency Code Error" {
+		t.Error("Test for Detecting Counterfeit Failed")
+	}
 	log.Println("Failed Currency test is success ", counterFeit)
 }
