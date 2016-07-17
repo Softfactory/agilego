@@ -36,8 +36,8 @@ func (dollar *Dollar) equals(object interface{}) (bool, error) {
 	case Dollar:
 		return dollar.amount == v.amount, nil
 	default:
-		var NotCalcualbleError = fmt.Errorf("This value is not calcuable.")
-		return false, NotCalcualbleError
+		var NotCalcuableError = fmt.Errorf("This value is not calcuable.")
+		return false, NotCalcuableError
 	}
 	// if object == nil {
 	// 	return false, nil
@@ -46,8 +46,8 @@ func (dollar *Dollar) equals(object interface{}) (bool, error) {
 	// } else if v, isDollar := object.(Dollar); isDollar {
 	// 	return dollar.amount == v.amount, nil
 	// }
-	// var NotCalcualbleError = fmt.Errorf("This value is not calcuable.")
-	// return false, NotCalcualbleError
+	// var NotCalcuableError = fmt.Errorf("This value is not calcuable.")
+	// return false, NotCalcuableError
 	//
-	// return false, NotCalcualbleError
+	// return false, NotCalcuableError
 }

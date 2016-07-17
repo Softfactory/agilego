@@ -155,8 +155,8 @@ func (sum Sum) equals(object interface{}) (bool, error) {
 		var isAddEnd, _ = sum.addend.equals(v.addend)
 		return isAugend && isAddEnd, nil
 	default:
-		var NotCalcualbleError = fmt.Errorf("This value is not calcuable.")
-		return false, NotCalcualbleError
+		var NotCalcuableError = fmt.Errorf("This value is not calcuable.")
+		return false, NotCalcuableError
 	}
 }
 
@@ -179,8 +179,8 @@ func (money Money) equals(object interface{}) (bool, error) {
 		log.Println("Value Type : ", money.amount, v)
 		return money.amount == v.amount, nil
 	default:
-		var NotCalcualbleError = fmt.Errorf("This value is not calcuable.")
-		return false, NotCalcualbleError
+		var NotCalcuableError = fmt.Errorf("This value is not calcuable.")
+		return false, NotCalcuableError
 	}
 }
 
