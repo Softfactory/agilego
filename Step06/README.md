@@ -178,8 +178,8 @@ func (sum Sum) equals(object interface{}) (bool, error) {
 		var isAddEnd, _ = sum.addend.equals(v.addend)
 		return isAugend && isAddEnd, nil
 	default:
-		var NotCalcualbleError = fmt.Errorf("This value is not calcuable.")
-		return false, NotCalcualbleError
+		var NotCalcuableError = fmt.Errorf("This value is not calcuable.")
+		return false, NotCalcuableError
 	}
 }
 ```

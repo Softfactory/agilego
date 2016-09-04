@@ -117,8 +117,8 @@ func (won *Won) equals(object interface{}) (bool, error) {
 	case Dollar:
 		return won.amount == v.amount, nil
 	default:
-		var NotCalcualbleError = fmt.Errorf("This value is not calcuable.")
-		return false, NotCalcualbleError
+		var NotCalcuableError = fmt.Errorf("This value is not calcuable.")
+		return false, NotCalcuableError
 	}
 }
 ```
@@ -161,7 +161,7 @@ type Won struct {
 ### 생성자 패턴을 활용하기
 사실 우리가 통화에 대한 개념에서 잘못 알고 있는 것이 있습니다.
 `equals`와 `times` 는 통화(즉, 돈)이 갖는 기본 기능입니다.
-`Dollar`라는 것은 이 통화의 속성 중에 하나일 뿐입니다.
+`Dollar`라는 것은 이 통화의 속성 중에 하나일 뿐입니다. 통화기호에 따라 `equals` 와 `times`의 논리적 구현이 바뀌지는 않을 것이기 때문입니다.
 즉 `Money`에 어느 나라의 통화인지 여부만 알 수 있으면 우리가 만들었던 테스트는 여전히 유효합니다.
 
 이후에 우리가 주목해야 할 것은 객체 생성시점에 통화기호를 입력해야 한다는 점입니다.
@@ -213,8 +213,8 @@ func (money *Money) equals(object interface{}) (bool, error) {
 	case Money:
 		return money.amount == v.amount, nil
 	default:
-		var NotCalcualbleError = fmt.Errorf("This value is not calcuable.")
-		return false, NotCalcualbleError
+		var NotCalcuableError = fmt.Errorf("This value is not calcuable.")
+		return false, NotCalcuableError
 	}
 }
 ```
@@ -316,4 +316,4 @@ func (special RentCar) getPrice() {
 > [건축] 높은 건물을 지을 때 디디고 서도록 긴 나무 따위를 종횡으로 엮어 다리처럼 걸쳐 놓은 설치물.
 
 우리가 만드는 테스트는 이 비계와 같습니다. 비계도 테스트와 마찬가지로 건물이 한층한층 올라갈때 마다 커지기 때문입니다. 무작정 비계를 높이 올리지도 건물만 높이 올리지도 않습니다. 한층씩 올라갈때 마다 비계를 올리고 올라간 층을 마무리하고 다시 다음 층에서 반복적인 작업을 수행합니다.
-그런데 이번 장에서 작성한 코드를 켄트 벡의 책에서는 좀더 호흡이 길게 여러 장으로 이어 갑니다. 아마도 "통화기호라는 것이 Money의 속성중 하나이다."를 전제하기 보다는 객체 지향적 접근으로 소스를 어떻게 지속적으로 성장시켜 나가는지 보여주려는 의도같습니다. GO의 언어적 특성과 통화에 대한 고찰을 통해 객체지향을 거쳐가지 않았고 따라서 좀더 짧은 호흡으로 코드를 성장시켰습니다. 호흡의 차이만 있을 뿐 결론은 같습니다.
+그런데 이번 장에서 작성한 코드를 켄트 벡의 책에서는 좀더 호흡이 길게 여러 장으로 이어 갑니다. 아마도 "통화기호라는 것이 Money의 속성중 하나이다."를 전제하기 보다는 객체 지향적 접근으로 소스를 어떻게 지속적으로 성장시켜 나가는지 보여주려는 의도같습니다. GO의 언어적 특성과 통화에 대한 고찰을 통해 벡의 객체지향적 사고 과정을 거쳐가지 않았고 따라서 좀더 짧은 호흡으로 코드를 성장시켰습니다. 호흡의 차이만 있을 뿐 결론은 같습니다.

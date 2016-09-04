@@ -50,5 +50,5 @@ func (money Money) equals(i interface{}) (bool, error) {
 	var NotCalculableError = fmt.Errorf("This value is not calculable.")
 	return false, NotCalculableError
 	// return true, nil
-	// panic(NotCalcualbleError)
+	// panic(NotCalcuableError)
 }

@@ -46,7 +46,7 @@ Value Object는 생성된 이후에 값이 변경되지 않는다는 특징 이�
 
 ### 실패를 위하여
 
-앞 장에서 테스트 순서를 밝혔듯이 이번 장부터는 순서를 별다른 설명없이 진행합니다.
+앞 장에서 테스트 순서를 밝혔듯이 이번 장부터는 세부 테스트 절차는 별다른 설명없이 바로 코드를 설명하는 것으로 진행합니다.
 먼저 테스트 코드입니다.
 
 ```go
@@ -101,8 +101,8 @@ func (dollar *Dollar) equals(object interface{}) (bool, error) {
 이제 테스트를 성공하도록 만들어야 합니다. 우선 멍청한 테스트부터 해결해야 합니다.
 
 ```go
-var NotCalcualbleError = fmt.Errorf("This value is not calcuable.")
-return false, NotCalcualbleError
+var NotCalcuableError = fmt.Errorf("This value is not calcuable.")
+return false, NotCalcuableError
 ```
 소스코드의 반환값을 바꾸었습니다. 직접 만든 에러를 생성하기 위해서 `fmt`를 임포트 했습니다.
 이제 실패를 테스트하는 코드는 `TestEquals` 가 됩니다.
@@ -125,8 +125,8 @@ if object == nil {
 } else if v, isDollar := object.(Dollar); isDollar {
     return dollar.amount == v.amount, nil
 }
-var NotCalcualbleError = fmt.Errorf("This value is not calcuable.")
-return false, NotCalcualbleError
+var NotCalcuableError = fmt.Errorf("This value is not calcuable.")
+return false, NotCalcuableError
 ```
 
 소스는 두가지 타입에 대해서 동치성을 검사합니다.
@@ -259,8 +259,8 @@ case int, int32, int64:
 case Dollar:
 	return dollar.amount == v.amount, nil
 default:
-	var NotCalcualbleError = fmt.Errorf("This value is not calcuable.")
-	return false, NotCalcualbleError
+	var NotCalcuableError = fmt.Errorf("This value is not calcuable.")
+	return false, NotCalcuableError
 }
 ```
 
